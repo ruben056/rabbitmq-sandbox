@@ -1,5 +1,6 @@
 package be.drs.scs;
 
+import com.github.javafaker.Faker;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -18,14 +19,14 @@ public class ScsApplication {
 
 	@Bean
 	public Supplier<String> stringSupplier(){
-		return () -> "testString # sdf d# dd qds f EEE # eee ##### qsdf";
+		return () -> Faker.instance().chuckNorris().fact();
 	}
 
 	@Bean
-	public Function<String, String> sanitize() {
+	public Function<String, String> transform() {
 		return value -> {
-			System.out.println("Sanitizing: " + value);
-			return value.replaceAll("#", "");
+			System.out.println("Transform: " + value);
+			return value.replaceAll(" ", "_");
 		};
 	}
 

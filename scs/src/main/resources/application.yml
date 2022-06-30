@@ -4,7 +4,7 @@
 
 spring.cloud:
   function:
-    definition: stringSupplier;sanitize|uppercase;printResult
+    definition: stringSupplier;transform|uppercase;printResult
   stream:
 #    binders:
 #      cluster:
@@ -14,10 +14,10 @@ spring.cloud:
 ##            rabbitmq:
 ##              addresses: svr-dcg-rabbit:5672,svr-dco-rabbit:5672
     bindings:
-      stringSupplier-out-0.destination: testprocessor-in
-      sanitize|uppercase-in-0.destination: testprocessor-in
-      sanitize|uppercase-out-0.destination: testprocessor-out
-      printResult-in-0.destination: testprocessor-out
+      stringSupplier-out-0.destination: transform-input
+      transform|uppercase-in-0.destination: transform-input
+      transform|uppercase-out-0.destination: transform-output
+      printResult-in-0.destination: transform-output
 #      log-in-0.destination: my-log-in
 #    rabbit:
 #      bindings:
