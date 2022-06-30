@@ -1,0 +1,53 @@
+#logging:
+#  level:
+#    org.springframework.web: TRACE
+
+spring.cloud:
+  function:
+    definition: stringSupplier;sanitize|uppercase;printResult
+  stream:
+#    binders:
+#      cluster:
+#        type: rabbit
+##        environment:
+##          spring:
+##            rabbitmq:
+##              addresses: svr-dcg-rabbit:5672,svr-dco-rabbit:5672
+    bindings:
+      stringSupplier-out-0.destination: testprocessor-in
+      sanitize|uppercase-in-0.destination: testprocessor-in
+      sanitize|uppercase-out-0.destination: testprocessor-out
+      printResult-in-0.destination: testprocessor-out
+#      log-in-0.destination: my-log-in
+#    rabbit:
+#      bindings:
+#        stringSupplier-out-0:
+#          producer:
+##            routingKeyExpression: headers['_type']
+#            quorum:
+#              enabled: true
+#        uppercase-out-0:
+#          producer:
+#            #            routingKeyExpression: headers['_type']
+#            quorum:
+#              enabled: true
+#        uppercase-in-0:
+#          consumer:
+#            bindingRoutingKey: ErIsIetsGewijzigd
+#            quorum:
+#              enabled: true
+#            dlqQuorum:
+#              enabled: true
+#            autoBindDlq: true
+#            requeueRejected: false
+#        printResult-in-0:
+#          consumer:
+#            bindingRoutingKey: ErIsIetsGewijzigd
+#            quorum:
+#              enabled: true
+#            dlqQuorum:
+#              enabled: true
+#            autoBindDlq: true
+#            requeueRejected: false
+
+
