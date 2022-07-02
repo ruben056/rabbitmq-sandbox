@@ -2,3 +2,4 @@ rootProject.name = 'rabbitmq-sandbox'
 
 include 'rabbitmq'
 include 'scs'
+include 'scs-consumer'

@@ -1,7 +1,9 @@
+server:
+  port: 8081
+
 #logging:
 #  level:
 #    org.springframework.web: TRACE
-
 spring:
   rabbitmq:
     host: localhost
@@ -10,7 +12,7 @@ spring:
     password: guest
   cloud:
     function:
-      definition: stringSupplier;transform|uppercase;printResult
+      definition: sout
     stream:
   #    binders:
   #      cluster:
@@ -20,11 +22,7 @@ spring:
   ##            rabbitmq:
   ##              addresses: svr-dcg-rabbit:5672,svr-dco-rabbit:5672
       bindings:
-        stringSupplier-out-0.destination: transform-input
-        transform|uppercase-in-0.destination: transform-input
-        transform|uppercase-out-0.destination: transform-output
-        printResult-in-0.destination: transform-output
-  #      log-in-0.destination: my-log-in
+        sout-in-0.destination: transform-output
   #    rabbit:
   #      bindings:
   #        stringSupplier-out-0:
