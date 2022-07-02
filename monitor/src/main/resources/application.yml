@@ -1,0 +1,57 @@
+server:
+  port: 8082
+
+#logging:
+#  level:
+#    org.springframework.web: TRACE
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    function:
+      definition: sout
+    stream:
+  #    binders:
+  #      cluster:
+  #        type: rabbit
+  ##        environment:
+  ##          spring:
+  ##            rabbitmq:
+  ##              addresses: svr-dcg-rabbit:5672,svr-dco-rabbit:5672
+      bindings:
+        sout-in-0.destination: transform-output
+  #    rabbit:
+  #      bindings:
+  #        stringSupplier-out-0:
+  #          producer:
+  ##            routingKeyExpression: headers['_type']
+  #            quorum:
+  #              enabled: true
+  #        uppercase-out-0:
+  #          producer:
+  #            #            routingKeyExpression: headers['_type']
+  #            quorum:
+  #              enabled: true
+  #        uppercase-in-0:
+  #          consumer:
+  #            bindingRoutingKey: ErIsIetsGewijzigd
+  #            quorum:
+  #              enabled: true
+  #            dlqQuorum:
+  #              enabled: true
+  #            autoBindDlq: true
+  #            requeueRejected: false
+  #        printResult-in-0:
+  #          consumer:
+  #            bindingRoutingKey: ErIsIetsGewijzigd
+  #            quorum:
+  #              enabled: true
+  #            dlqQuorum:
+  #              enabled: true
+  #            autoBindDlq: true
+  #            requeueRejected: false
+
+
