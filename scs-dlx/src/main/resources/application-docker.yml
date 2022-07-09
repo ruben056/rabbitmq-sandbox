@@ -1,0 +1,12 @@
+#logging:
+#  level:
+#    org.springframework.web: TRACE
+
+spring:
+  rabbitmq:
+#    host: localhost
+    host: rabbitmq  #for docker...
+    port: 5672
+    username: guest
+    password: guest
+

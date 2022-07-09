@@ -1,0 +1,29 @@
+#logging:
+#  level:
+#    org.springframework.web: TRACE
+
+server:
+  port: 8083
+
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    function:
+      definition: dlxStringSupplier;printDlxResult
+    stream:
+      bindings:
+        dlxStringSupplier-out-0:
+          destination: dlxsupplier-output
+        printDlxResult-in-0:
+          destination: dlxsupplier-output
+          group: rabbitmq # apparently group is required, for anymous group no dlq is being created...
+      rabbit:
+        bindings:
+          printDlxResult-in-0:
+            consumer:
+              autoBindDlq: true  # this automatically binds and creates the dlq (if consumer is nog in anonymous group)
+              requeueRejected: false

@@ -54,3 +54,15 @@ services:
     networks:
       - backend
 
+  spring-cloud-stream-dlx:
+    image: drs/scs-dlx:latest
+    ports:
+      - "8083:8083"
+    environment:
+      - "SPRING_PROFILES_ACTIVE=docker"
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - backend
+
